@@ -1,6 +1,7 @@
 \documentclass[final]{beamer}
 
 \usepackage[size=custom, width=180, height = 120, scale=1.4,debug]{beamerposter}
+\usepackage{wrapfig}
 
 \usetheme{Pittsburgh}
 
@@ -26,9 +27,9 @@
 \newlength{\threecolwid}
 \setlength{\paperwidth}{180cm} 
 \setlength{\paperheight}{120cm} %
-\setlength{\sepwid}{0.024\paperwidth} % Separation width (white space) between columns
-\setlength{\onecolwid}{0.31\paperwidth} % Width of one column
-\setlength{\twocolwid}{0.62\paperwidth} % Width of two columns
+\setlength{\sepwid}{0.02\paperwidth} % Separation width (white space) between columns
+\setlength{\onecolwid}{0.3\paperwidth} % Width of one column
+\setlength{\twocolwid}{0.6\paperwidth} % Width of two columns
 %\setlength{\topmargin}{-1.5in} % Reduce the top margin size
 %-----------------------------------------------------------
 
@@ -56,7 +57,7 @@
 \begin{columns}
   % \begin{center}
   \begin{column}{\twocolwid}
-    {\fontsize{135}{180}
+    {\fontsize{130}{180}
         %\rule{\linewidth}{0.25cm}
         \textsc{%textsc makes text small capsx1%aQ$&kSPmV
         \color{orange}{A Topological Approach to Magnetic Nulls}}\\
@@ -87,7 +88,7 @@
 \begin{column}{\onecolwid} % The first column
 
 %----------------------------------------------------------------------------------------
-%	THE INDEX OF A NULL
+%	BACKGROUND
 %----------------------------------------------------------------------------------------
 \begin{block}{\huge{Introduction}}
 	Three-dimensional magnetic nulls play an important role in astrophysical
@@ -198,7 +199,7 @@
 \end{column} % End first column
 
 %----------------------------------------------------------------------------------------
-%	THE NULLS AROUND A DIPOLE
+%	ISOTROPES
 %----------------------------------------------------------------------------------------
 
 \begin{column}{\sepwid}\end{column} % Empty spacer column
@@ -210,145 +211,179 @@
 %
 %----------------------------------------------------------------------------------------
 
-\begin{block}{The Isotropic field}
-    The function $g:\mathbb{R}^3\rightarrow S^2$ 
-    is a mapping from a 3-dimensional space to a two-dimensional space.
-    At any point in $\mathbb{R}^3$ (with exeption of null points and singularities), 
-    there is a there is a direction in which the direction
-    of the magnetic field remains constant. 
-    We call these lines the isotropes of the magnetic field. 
-    These lines cannot start or end, except at nulls. 
-
-    Since the index of a null equals the degree of the mapping of $g|_\partial D^3_{x_0}$, 
-    this means that at a null of index $\pm 1$, at least one isotrope corresponding to every
-    direction is present on the surface of $D^3_{x_0}$. 
-    Since this index theorem holds for any volume that encloses the null, these isotropes
-    approach the null arbitrarily closely. 
-    The isotropes  
-    
-
-
+\begin{block}{\huge{The Isotrope Field}}
+\begin{block}{Isotrope Lines}
+  The magnetic field direction defines a map from space to the sphere $g:\mathbb{R}^3\rightarrow S^2$,
+  from a 3 dimensional manifold to a 2 dimensional manifold.
+  Since this map loses a degree of freedom,
+  at any point in $\mathbb{R}^3$ (with exeption of null points and singularities),
+  there is a there is a direction in which the direction
+  of the magnetic field remains constant.
+  We call these lines the isotropes of the magnetic field.
+  These lines cannot start or end, except at nulls.
+  As described by the topological index of nulls, the magnetic field direction
+  on a closed surface surrounding a single null takes on all possible values (mapping over all of $S^2$).
+  Therefore any null is the termination of isotropes for every magnetic field direction.
 \end{block}
 
+\begin{block}{Motivitating the Isotrope Field}
+  We see that nulls:
+  \begin{itemize}
+  \item can be counted by integration over an enclosing surface.
+  \item function as sources and terminations for isotrope lines.
+  \end{itemize}
+  In analogy to electrostatic point charges,
+  this suggests constructing a field tangent to the isotrope lines (E-field lines)
+  that has a Gauss's Law for topological index (electric charge).
+\end{block}
 
-\begin{block}{Calculating the Isotropic field}
-
-The index of a null can be defined as the index of the map from a surface
-enclosing the null to $S^2$ via $g$. This can be extended to a surface
-enclosing several nulls. We would like to construct a vector field,
-that when integrated over this surface, gives the sum of the indices of
-the enclosed nulls. We define this by pulling back via $g$ the
-integration over $S^2$ used to define the index to an integral over a
-surface in $\mathbb{R}^3$.\\
-	\begin{multline}
-		4\pi\sum_{x_i\in U}\mathrm{Ind}(x_i)=\int_{g_*\partial U}\omega=\int_{g_*\partial U}d\alpha d\beta J(\alpha,\beta)\\
-		=\int_{\partial U}dxdy
-\begin{vmatrix}
-  \partial_x\alpha & \partial_y \beta \\
-  \partial_y\alpha & \partial_y \beta
-\end{vmatrix}
-	J(\alpha,\beta)\\
-=\int_{\partial U}g^*\omega=\int_{\partial U}v\cdot da
-	\end{multline}
-Here we have taken some coordinates $(\alpha,\beta)$ on $S^2$, for which the
-	area two-form on $S^2$ becomes $d\alpha\wedge d\beta J(\alpha,\beta)$.
-	We find that the vector field, which we call the isotrope field, is the
-	Hodge dual of the pullback over $f$ of the area two-form on $S^2$,
-	\begin{equation}
-		v=\star g^*\omega
-	\end{equation}
-for which we can find an expression in terms of our coordinates on $S^2$ as functions of
-	$R^3$ defined by $g(x)=(\alpha(x),\beta(x))$. For any two vectors $a,b$:
-	\begin{multline}
-		v\cdot(a\times b)=g^*\omega(a,b)=
-\begin{vmatrix}
-  \partial_x\alpha & \partial_y \beta \\
-  \partial_y\alpha & \partial_y \beta
-\end{vmatrix}
-J(\alpha,\beta)\\
-		=(\nabla\alpha\times\nabla\beta)\cdot(a\times b)J(\alpha,\beta)
-	\end{multline}
+\begin{block}{Deriving the Isotrope Field}
+  We want to construct some vector field $v$ such that integrating it over a closed surface
+  gives the total topological index of the enclosed nulls.
+  \begin{equation}
+    \int_{\partial U}v\cdot da=4\pi\sum_{x_i\in U}\mathrm{Ind}(x_i)
+  \end{equation}
+  Calculating total index by counting covers of $S^2$ by the surface of a region $U\in\mathbb{R}^3$
+  can be written:
+  \begin{equation}
+    4\pi\sum_{x_i\in U}\mathrm{Ind}(x_i)=\int_{g_*\partial U}\omega
+  \end{equation}
+  where we have defined some properly normalized area two-form $\omega$ on $S^2$.
+  We need to transfer our notion of area on $S^2$ (defined by $\omega$)
+  to an object that can be integrated over a surface in $R^3$.
+  This is just the pull-back through our map $g:\mathbb{R}^3\rightarrow S^2$
+  of the area two-form $\omega$:
+  \begin{equation}
+    4\pi\sum_{x_i\in U}\mathrm{Ind}(x_i)=\int_{\partial U}g^*\omega
+  \end{equation}
+  But we wanted a vector field, not a two-form, so we then take the Hodge dual:
+  \begin{equation}
+    v=\star g^*\omega
+  \end{equation}
+  which yields, as desired:
+  \begin{equation}
+    4\pi\sum_{x_i\in U}\mathrm{Ind}(x_i)=\int_{\partial U}v\cdot da
+  \end{equation}
+  If we choose to parameterize magnetic field direction with standard spherical coordinates,
+  and use the usual solid angle definition of area on $S^2$, this becomes:
+  \begin{equation}
+    v=(\nabla\theta\times\nabla\phi)\sin\phi
+  \end{equation}
+  The isotrope field is directed away from nulls of index $+1$ and towards nulls of
+  index $-1$.
+  In this sense the isotrope field is analogous to the electric field of  point charges, and it's
+  integral over a surface calculates the topological charge enclosed.
+  \fbox{
+    \begin{minipage}{\textwidth}
+      Working with some arbitrary coordinates $(\alpha,\beta)$
+      on $S^2$ with $\omega=d\alpha\wedge d\beta J(\alpha,\beta)$,
+      we can derive the general form of $v$
+      and verify it indeed lies tangent to the isotrope lines.
+      \begin{equation}
+        4\pi\sum_{x_i\in U}\mathrm{Ind}(x_i)
+        =\int_{g_*\partial U}\omega
+        =\int_{g_*\partial U}d\alpha d\beta J(\alpha,\beta)
+        =\int_{\partial U}dxdy
+        \begin{vmatrix}
+          \partial_x\alpha & \partial_x \beta \\
+          \partial_y\alpha & \partial_y \beta
+        \end{vmatrix}
+	J(\alpha,\beta)
+        =\int_{\partial U}g^*\omega
+        =\int_{\partial U}v\cdot da
+      \end{equation}
+      For any two vectors $a,b$:
+      \begin{equation}
+        v\cdot(a\times b)
+        =g^*\omega(a,b)
+        =\begin{vmatrix}
+           \partial_a\alpha(\vec{x}) & \partial_a\beta(\vec{x}) \\
+           \partial_b\alpha(\vec{x}) & \partial_b\beta(\vec{x})
+         \end{vmatrix}
+         J(\alpha(\vec{x}),\beta\vec{x}))
+         =(\nabla\alpha\times\nabla\beta)\cdot(a\times b)J(\alpha,\beta)
+      \end{equation}
 So $v$ can be written as:
 	\begin{equation}
 		v=(\nabla\alpha\times\nabla\beta)J(\alpha,\beta)
 	\end{equation}
-We can immediately see that $g$ is constant on streamlines of $v$, so the streamlines of $v$ are by definition the previously defined isotropes of $\mathbf{B}$.
+We can immediately see that $g:\vec{x}\mapsto (\alpha,\beta)$ is constant on streamlines of $v$, so the streamlines of $v$ are by definition the previously defined isotropes of $\mathbf{B}$.
 	\begin{equation}
 		v\perp\nabla\alpha,\nabla\beta\Rightarrow\partial_v\vec g=0
 	\end{equation}
-If we choose the usual angular coordinates on the sphere, $(\alpha,\beta)\Rightarrow(\theta,\phi)$, then
-	\begin{equation}
-		v=(\nabla\theta\times\nabla\phi)\sin\phi
-	\end{equation}
-
-    The Isotrope field is directed away from nulls of index $+1$ and towards nulls of
-    index $-1$.
-    In this sense the Isotrope field is analogous to the electric field of  point charges, and it's
-    integral over a surface calculates the topological charge enclosed.
-
-
+    \end{minipage}
+  }
 
 \end{block}
 
-\begin{block}{Isotropes of a localized field embedded in a guide field}
-    A localized magnetic field is a field generated by some local current distribution
-    that goes to zero sufficiently rapidly at infinity. 
-    Examples include the dipole field of a planet or star, or the currents carried by the
-    plasma in an FRC. 
-    Such local configurations are often embedded in a guide field, such as the
-    interplanetary or galactic magnetic field, or the field produced by external coils in
-    the case of the FRC. 
-
-    The question then is, where and what types of nulls exist in this configuration of
-    local field plus guide field. 
-    At sufficient distance, the guide field is stronger than the local field, and the
-    mapping of $g$ from the surface of a sufficiently large ball $D^3$ reduces to a null-homotopic
-    function (degree 0).
-    The indices of the nulls enclosed in this ball must therefore always sum to zero. 
-
-    The isotropes of a local field
-    constitute lines, which cannot end, and must therefore continue to infinity. 
-    When the local field is placed in a guide field (direct sum of the two fields), the
-    nulls appear on the isotrope corresponding with the direction opposite to the
-    direction of the guide field. 
-    The two fields sum to zero where the local field has equal magnitude to the guide
-    field. 
-    Surfaces of constant field strength are compact and closed, and the isotrope pierces
-    them an even number of times, resulting in nulls of index +1 where the isotrope
-    enters, and -1 where the isotrope leaves. 
-    
-
-
-
-
 \end{block}
-\end{column} 
+\end{column}
+
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
 %----------------------------------------------------------------------------------------
-\begin{column}{\onecolwid} %Start column 2
+\begin{column}{\onecolwid} %Start column 3
+
+\begin{block}{\huge{Local Magnetic Fields in Guide Fields}}
+\begin{block}{Isotropes of a localized field embedded in a guide field}
+  This work was motivated by the problem of determining the locations of nulls in a field generated by
+  localized currents embedded in a homogeneous guide field
+  and how these nulls move when the guide field is varied.
+  This kind of configuration arises in systems such as the magnetospheres of celestial objects and
+  the field configuration in an FRC.\\
+  When the local field is placed in a guide field (direct sum of the two fields), the
+  nulls appear on the isotrope (of the local field) corresponding with the direction opposite to the
+  direction of the guide field. 
+  The two fields sum to zero on the surface where the local field has equal magnitude to the guide field. 
+  For a particular guide field magnitude and direction, the nulls will be at the intersection of
+  corresponding isotropes with corresponding isosurfaces of field strength.\\
+  The isotropes of a local field constitute lines, which cannot end,
+  and must therefore continue to infinity. 
+  Surfaces of constant field strength are compact and closed, and the isotrope pierces
+  them an even number of times, resulting in nulls of index +1 where the isotrope
+  enters, and -1 where the isotrope leaves.\\
+  By considering an enclosing surface sufficiently far from the local field,
+  it is clear that the sum of the indices of all nulls in the system is 0.
+    
+\end{block}
   
 \begin{block}{The Isotropes of a dipole}
+    \begin{wrapfigure}{r}{.5\textwidth}
+      \includegraphics[width=.5\textwidth]{fig/mainfig.png}
+    \end{wrapfigure}
     A dipole field has topological index 0, and its isotropes are straight lines passing through
-	the singularity of the dipole. 
-	The image below shows the magnetic field lines of a dipole given by
-	\begin{equation}
-		\mathbf{B} = \frac{3(\mathbf{m}\cdot\hat{\mathbf{r}})\hat{\mathbf{r}}-\mathbf{m}}
-		{r^3}
-	\end{equation}
-	where $\mathbf{m}$ is the dipole moment given by a unit vector in the
-	$\hat{z}$-direction. 
-	The magnetic field lines are given by the blue curves
-	Seven isotropes are shown in different colors, with a vector indicating the diretion of the
-	isotrope. 
-    \begin{figure}
-        %\includegraphics[width=\twocolwid]{fig/mainfig.png}
-    \end{figure}
-	The surfaces of constant field strength enclose the dipole. 
-	Whenever a dipole is embedded in a guide field, two nulls appear where the isotrope of
-	opposite direction to the guide field intersects the surface of constant magnitude
-	equal to the guide field strength. 
+    the singularity of the dipole.
+    The image shows the magnetic field lines of a dipole given by
+    \begin{equation}
+      \mathbf{B} = \frac{3(\mathbf{m}\cdot\hat{\mathbf{r}})\hat{\mathbf{r}}-\mathbf{m}}
+      {r^3}
+    \end{equation}
+    where $\mathbf{m}$ is the dipole moment given by a unit vector in the
+    $\hat{z}$-direction. 
+    The magnetic field lines are given by the blue curves
+    Seven isotropes are shown in different colors, with a vector indicating the diretion of the
+    isotrope.
+    The surfaces of constant field strength enclose the dipole. 
+    Whenever a dipole is embedded in a guide field, two nulls appear where the isotrope of
+    opposite direction to the guide field intersects the surface of constant magnitude
+    equal to the guide field strength. 
 \end{block}
 
-%----------------------------------------------------------------------------------------
+\begin{block}{The Dipole in a guide field}
+    \begin{wrapfigure}{r}{.5\textwidth}
+    \includegraphics[width=.5\textwidth]{fig/separatrix_dipole.png}
+    \end{wrapfigure}
+
+    The magnetic field of a dipole embedded in a guide field of direction $(-1,0,-1)$ is
+    shown in the figure above. 
+    The spines are colored red, the fan corresponding to the
+    index $-1$ null is dark blue and the fan corresponding to the
+    index $+1$ is light blue. 
+
+
+\end{block}
+
+% ----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 %	MATHEMATICAL SECTION
@@ -390,23 +425,8 @@ If we choose the usual angular coordinates on the sphere, $(\alpha,\beta)\Righta
 
 %----------------------------------------------------------------------------------------
 
-
-%----------------------------------------------------------------------------------------
-%	Dipole in a guide field
-%----------------------------------------------------------------------------------------
-\begin{block}{The Dipole in a guide field}
-    \begin{figure}
-    \includegraphics[width=\onecolwid]{fig/separatrix_dipole.png}
-    \end{figure}
-
-    The magnetic field of a dipole embedded in a guide field of direction $(-1,0,-1)$ is
-    shown in the figure above. 
-    The spines are colored red, the fan corresponding to the
-    index $-1$ null is dark blue and the fan corresponding to the
-    index $+1$ is light blue. 
-
-
 \end{block}
+
 
 %----------------------------------------------------------------------------------------
 

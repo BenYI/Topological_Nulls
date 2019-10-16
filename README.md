@@ -1,6 +1,6 @@
 # Topological_Nulls
 
-Code to completely generate the poster: 'Magnetic Nulls from the Topological Perspective' presented ad EPS2019 by Chris Smiet et al. 
+Code to completely generate the poster: 'Magnetic Nulls from the Topological Perspective' presented at APS DPP 2019 by Ben Israeli et al. 
 
 Prerequisites: Blender, LaTeX (including the LaTeX packages: qrcode, beamer, beamerposter)
 
@@ -8,7 +8,7 @@ Prerequisites: Blender, LaTeX (including the LaTeX packages: qrcode, beamer, bea
 Setup: 
 download this repo *recursively* \n
 Install Blender. \n
-  $ > git clone --recurse-submodules git@github.com:smiet/Topological_Nulls.git \n
+  $ > git clone --recurse-submodules git@github.com:BenYI/Topological_Nulls.git \n
   $ > make \n
 
 

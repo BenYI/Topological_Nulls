@@ -56,7 +56,7 @@ for num, radius in enumerate(radii):
         tol= 1e-7, hMin=1e-6, iterMax=1000, lMax = 50).tracers
         bz.plot(isotropeback[:,0], isotropeback[:,1], isotropeback[:,2],
         radius=0.02,  color=color)
-        vecs.append(bz.vec(xx, fn(xx), length=0.5, color=color))
+        vecs.append(bz.vec(xx, fn(xx), length=1.0, color=color))
 
 
 bpy.data.scenes['Scene'].render.filepath = '../hopftropes.png'

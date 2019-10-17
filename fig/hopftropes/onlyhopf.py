@@ -38,7 +38,7 @@ fn=partial(ig.BHopf, w1=1, w2=1)
 
 
 for i in range(5):
-    dist = points[i]
+    dist = radii[i]
     cmap = plt.cm.get_cmap(colormaps[i])
     norm = plt.Normalize(vmin=0, vmax=num_circles)
     s_m = plt.cm.ScalarMappable(cmap = cmap, norm = norm)
@@ -46,9 +46,9 @@ for i in range(5):
         angle = np.linspace(0,2*np.pi, num_circles+1)[j] # on the circle, last element is first
         color = s_m.to_rgba(j)[:-1] # throw out the a of rgba
         streamline = mystreamline(xx=dist*np.array([np.sin(angle),np.cos(angle),0]))
-        ig.plot(streamline[:,0], streamline[:,1], streamline[:,2],
+        bz.plot(streamline[:,0], streamline[:,1], streamline[:,2],
 	radius=0.02, resolution=8, color=color)
 
 
-bpy.data.scenes['Scene'].render.filepath = '../hopftropes.png'
+bpy.data.scenes['Scene'].render.filepath = '../onlyhopf.png'
 bpy.ops.render.render(write_still=True)

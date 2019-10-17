@@ -6,8 +6,16 @@ poster:
 	pdflatex -synctex=1 -interaction=nonstopmode  -enable-write18 nulls.tex
 	pdflatex -synctex=1 -interaction=nonstopmode -enable-write18 nulls.tex
 
-images:  mainfig posindex negindex separatrix_dipole
+images:  nulltropes hopftropes mainfig posindex negindex separatrix_dipole 
 
+nulltropes:
+	cd fig/nulltropes; blender -b scene.blend -P nulltropes.py
+
+hopftropes:
+	cd fig/hopftropes; blender -b scene.blend -P hopftropes.py
+
+merger:
+	cd fig/merger; blender -b scene.blend -P merger.py
 
 mainfig:
 	cd fig/Mainfig; blender -b scene_earth.blend -P mainfig.py

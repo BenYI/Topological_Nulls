@@ -2,7 +2,7 @@
 
 Code to completely generate the poster: 'Magnetic Nulls from the Topological Perspective' presented at APS DPP 2019 by Ben Israeli et al. 
 
-Prerequisites: Blender, LaTeX (including the LaTeX packages: qrcode, beamer, beamerposter)
+Prerequisites: Blender, LaTeX (including the LaTeX packages: qrcode, beamer, beamerposter, wrapfig)
 
 
 Setup: 

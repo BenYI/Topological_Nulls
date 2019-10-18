@@ -9,7 +9,7 @@ poster:
 images:  nulltropes onlyhopf hopftropes mainfig posindex negindex separatrix_dipole 
 
 nulltropes:
-	cd fig/nulltropes; blender -b scene.blend -P nulltropes.py
+	cd fig/nulltropes; blender -b scene.blend -P nulltropes.py; blender -b scene.blend -P nulltropesneg.py
 
 hopftropes:
 	cd fig/hopftropes; blender -b scene.blend -P hopftropes.py; blender -b scene.blend -P onlyhopf.py

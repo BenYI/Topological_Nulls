@@ -113,7 +113,8 @@
 \begin{block}{\huge{Background}}
 \begin{block}{Type A and Type B Nulls}
   Because magnetic fields are divergence free,
-  nulls of 3D magnetic fields are constrained to be one of two types:
+  nulls of 3D magnetic fields are constrained to be one of two types
+  \cite{lau1990three, parnell1996structure, greene1988geometrical}:
   \begin{columns}[t,totalwidth=\onecolwid] % Split up the two columns wide column
     \begin{column}{.45\onecolwid}
         \begin{centering}
@@ -387,24 +388,71 @@
   \begin{figure}
     \centering
     \begin{subfigure}[b]{.45\textwidth}
-      \includegraphics[width=\textwidth]{fig/mainfig.png}
+      \includegraphics[width=\textwidth]{fig/onlyhopf.png}
       \caption{}
     \end{subfigure}
     \begin{subfigure}[b]{.45\textwidth}
-      \includegraphics[width=\textwidth]{fig/separatrix_dipole.png}
+      \includegraphics[width=\textwidth]{fig/hopftropes.png}
       \caption{}
     \end{subfigure}
     \caption{
-      a) The magnetic field of a dipole.
-      The magnetic field lines are given by the blue curves.
-      Seven isotropes are shown in different colors, with a vector indicating the diretion of the
-      isotrope. b) The magnetic field of a dipole embedded in a guide field of direction $(-1,0,-1)$. 
-      The spines are colored red, the fan corresponding to the
-      index $-1$ null is dark blue and the fan corresponding to the
-      index $+1$ is light blue.
+      a) The structure of the Hopf field, a toroidal magnetic field
+      constructed from the Hopf map $S^3\rightarrow S^2$ through stereographic projection.~\cite{smiet2017hopf}
+      b) Several isotrope of the Hopf field with some of their directions labelled.
+      Their color corresponds to the fieldline from (a) which they intersect.
+      Note that the isotropes are straight lines.
     }
   \end{figure}
 \end{block}
+
+\begin{block}{\huge Further Directions}
+  \begin{block}{Isotrope Lines as Constraints}
+    \begin{itemize}
+      \item Application: Null search algorithm via integration of isotropic field.
+      (Compare with existing bisection and calculation of index over volumes.~\cite{greene1992locating})
+      \item Classification of null bifurcation by study of intersection of isotrope lines
+        with isosurfaces of $|B|$.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Charts on $S^2$ and Straightening Nulls}
+    \begin{itemize}
+      \item The derivation of the isotrope field did not assume
+        any particular coordinates or area form on $S^2$.
+      \item This can be chosen arbitrarily , resulting in \textbf{different isotrope fields}.
+      \item In particular, consider a change of basis that diagonalizes $J$.
+        Using the standard area form on $S^2$ in these coordinates results in the fan plane
+        coinciding with the equator of $S^2$ and the spine coinciding with the poles,
+        regardless of the tilt of the fan plane relative to the spine in $R^3$.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Isolines of Eigenvectors of $J$}
+    \begin{itemize}
+      \item Where $J$ has real eigenvalues, ($\nabla \times B=0$),
+        eigenvectors of $J$ are in $\mathbb{R}P^2$, which is a 2 dimensional manifold,
+        so there are lines along which an eigenvector is constant.
+      \item A null in a current-free region
+        moving due to a changing guide field does not change the orientation of
+        its fan plane and spine.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Topological Defects and Connections to Other Fields}
+    \begin{itemize}
+      \item Framing nulls as topological defects
+        (in this case characterized by the first homotopy group of the sphere)
+        raises the possibility of connecting to or using results from
+        other fields with similar topological phenomena
+        (defects in nematic liquid crystals\cite{alexander2012nematic} etc).
+      \item Topologically invariant structures have previously been
+        found in other electromagnetic phenomena, lending the possibility
+        of relating these results to broader theories.\cite{thompson2014hopfions,ranada1992em}
+    \end{itemize}
+  \end{block}  
+  
+\end{block}
+
 \end{column}
 \begin{column}{\sepwid}\end{column} % Empty spacer column
 \begin{column}{\onecolwid}
@@ -444,71 +492,9 @@
       \textbf{they move towards each other through an isotrope on their fan planes.}
   \end{itemize}
 \end{block}
-\end{column}
-\end{columns}
-\end{block}
 
-%\end{column}
+\vspace{4in}
 
-%\begin{column}{\sepwid}\end{column} % Empty spacer column
-
-%\begin{column}{\onecolwid}
-
-% ----------------------------------------------------------------------------------------
-\begin{columns}[t,totalwidth=\twocolwid]
-
-\begin{column}{\onecolwid} % Final section of content
-\begin{block}{\huge Further Directions}
-  \begin{block}{Isotrope Lines as Constraints}
-    \begin{itemize}
-      \item Application: Null search algorithm via integration of isotropic field.
-      \item Classification of null bifurcation by study of intersection of isotrope lines
-        with isosurfaces of $|B|$.
-    \end{itemize}
-  \end{block}
-
-  \begin{block}{Charts on $S^2$ and Straightening Nulls}
-    \begin{itemize}
-      \item The derivation of the isotrope field did not assume
-        any particular coordinates or area form on $S^2$.
-      \item This can be chosen arbitrarily , resulting in \textbf{different isotrope fields}.
-      \item In particular, consider a change of basis that diagonalizes $J$.
-        Using the standard area form on $S^2$ in these coordinates results in the fan plane
-        coinciding with the equator of $S^2$ and the spine coinciding with the poles,
-        regardless of the tilt of the fan plane relative to the spine in $R^3$.
-    \end{itemize}
-  \end{block}
-
-  \begin{block}{Isolines of Eigenvectors of $J$}
-    \begin{itemize}
-      \item Where $J$ has real eigenvalues, ($\nabla \times B=0$),
-        eigenvectors of $J$ are in $\mathbb{R}P^2$, which is a 2 dimensional manifold,
-        so there are lines along which an eigenvector is constant.
-      \item A null in a current-free region
-        moving due to a changing guide field does not change the orientation of
-        its fan plane and spine.
-    \end{itemize}
-  \end{block}
-
-  \begin{block}{Topological Defects and Connections to Other Fields}
-    \begin{itemize}
-      \item Framing nulls as topological defects
-        (in this case characterized by the first homotopy group of the sphere)
-        raises the possibility of connecting to or using results from
-        other fields with similar topological phenomena
-        (defects in nematic liquid crystals etc).
-      \item Topologically invariant structures have previously been
-        found in other electromagnetic phenomena, lending the possibility
-        of relating these results to broader theories.
-    \end{itemize}
-  \end{block}  
-  
-\end{block}
-\end{column}
-
-\begin{column}{\sepwid}\end{column} % Empty spacer column
-
-\begin{column}{\onecolwid} % End material
 \begin{block}{\huge References}
 
 \nocite{*} % Insert publications even if they are not cited in the poster
@@ -544,6 +530,26 @@ This code uses the BlenDaViz library: \url{https://github.com/SimonCan/BlenDaViz
 
 
 \end{block}
+\end{column}
+\end{columns}
+\end{block}
+
+%\end{column}
+
+%\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+%\begin{column}{\onecolwid}
+
+% ----------------------------------------------------------------------------------------
+\begin{columns}[t,totalwidth=\twocolwid]
+
+\begin{column}{\onecolwid} % Final section of content
+\end{column}
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % End material
+
 \end{column}
 \end{columns}
 

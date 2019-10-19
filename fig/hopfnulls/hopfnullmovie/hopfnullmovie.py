@@ -26,16 +26,17 @@ import BlenDaViz as bz
 
 #guide field properties:
 Rmax = 0.2
-Rs = np.concatenate((np.linspace(0.03, Rmax, 15), Rmax*np.ones(45)))
+#Rs = np.concatenate((Rmax*np.ones(45)))
+Rs = Rmax*np.ones(45)
 Phi_int=0.6
-Phis = np.concatenate((0.00000001*np.ones(10), np.linspace(0, Phi_int, 20), Phi_int*np.ones(10), np.linspace(Phi_int, np.pi, 20)))
-Thetas = np.concatenate((np.pi*np.ones(20), np.linspace(np.pi, 3*np.pi, 20), np.pi*np.ones(20)))
+Phis = np.linspace(Phi_int, 1.675, 45)
+Thetas =  np.pi*np.ones(45)
 
 First= True
 
-for framenum, (R, Phi, Theta) in enumerate(zip(Rs, Phis, Thetas)):
+for framenum, (R, Phi, Theta) in reversed(list( enumerate(zip(Rs, Phis, Thetas)))):
     fn = partial(ig.BHopf_guide_RPT, R=R, Phi=Phi, Theta = Theta)
-#    if framenum <20:
+#    if framenum <42:
 #        print('break for framenum {}'.format(framenum))
 #        continue #but skip this iteration
 
@@ -43,9 +44,8 @@ for framenum, (R, Phi, Theta) in enumerate(zip(Rs, Phis, Thetas)):
     nulls = ig.Hopf_nulls(R, Phi, Theta)
     npoints=60
     startpoints = []
-    null1 = ig.zeroPoints(nulls[0], ig.Dipole(nulls[0]), sign=-1, npoints=npoints)
-    null2 = ig.zeroPoints(nulls[1], ig.Dipole(nulls[1]), sign=1, npoints=npoints)
-
+    null1 = ig.zeroPoints(nulls[0], ig.Dipole(nulls[0]), sign=-1, dist=0.01, npoints=npoints, radius = 0.01)
+    null2 = ig.zeroPoints(nulls[1], ig.Dipole(nulls[1]), sign=1, dist = 0.01, npoints=npoints, radius = 0.01)
 
     n1spine = ig.stream_multi(null1.fanpoints, vvfn=fn, tol=1e-7, iterMax=3000,  hMin=2e-7, lMax = 100, intdir='forward')
     n1fan = ig.stream_multi(null1.fanpoints, vvfn=fn, tol=1e-8, iterMax=3000,  hMin=2e-7, lMax = 100, intdir='back')
@@ -90,5 +90,5 @@ for framenum, (R, Phi, Theta) in enumerate(zip(Rs, Phis, Thetas)):
 
 
 
-    bpy.data.scenes['Scene'].render.filepath = 'hopfnullmovie{}.png'.format(num)
+    bpy.data.scenes['Scene'].render.filepath = 'take4/hopfnullmovie{}.png'.format(framenum)
     bpy.ops.render.render(write_still=True)

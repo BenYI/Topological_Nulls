@@ -1,7 +1,7 @@
 \documentclass[final]{beamer}
 
-\usepackage[size=custom,width=152,height=123]{beamerposter}
-% \usepackage{wrapfig}
+\usepackage[size=custom,width=152,height=108]{beamerposter}
+%\usepackage{wrapfig}
 \usepackage{subcaption}
 
 \usetheme{Pittsburgh}
@@ -22,12 +22,14 @@
 % Set twocolwid to be (2*onecolwid)+sepwid = 0.464
 % Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
 
+\beamertemplatenavigationsymbolsempty
+
 \newlength{\sepwid}
 \newlength{\onecolwid}
 \newlength{\twocolwid}
 \newlength{\threecolwid}
 \setlength{\paperwidth}{152cm} 
-\setlength{\paperheight}{123cm} %
+\setlength{\paperheight}{108cm} %
 \setlength{\sepwid}{0.02\paperwidth} % Separation width (white space) between columns
 %\setlength{\onecolwid}{0.3\paperwidth} % Width of one column
 %\setlength{\twocolwid}{0.6\paperwidth} % Width of two columns
@@ -49,7 +51,7 @@
 \addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
 \addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
 
-\setlength{\belowcaptionskip}{2ex} % White space under figures
+\setlength{\belowcaptionskip}{0ex} % White space under figures
 \setlength{\belowdisplayshortskip}{2ex} % White space under equations
 
 \begin{frame}[t] % The whole poster is enclosed in one beamer frame
@@ -105,7 +107,7 @@
 	It is shown that the isotropes can be recovered as the stream lines of
 	the isotrope field, which is defined via a geometric formula from the
 	magnetic field, and for which nulls act as charges analogous to point charges generating
-        and electric field. In this way, the index theorem for magnetic nulls can be reframed as a Gauss's Law
+        an electric field. In this way, the index theorem for magnetic nulls can be reframed as a Gauss's Law
         on the isotrope field. 
 	
 \end{block}
@@ -159,7 +161,7 @@
 \begin{block}{Topological Index}
   Define the map $g:\mathbb{R}^3\rightarrow S^2$ that sends points in
   space to the unit vectors in the direction of the field $\mathbf{B}$
-  (i.e. points on the unit sphere).
+  (i.e. points on the unit sphere):
   \begin{equation}\label{eq:director}
     g = \frac{\mathbf{B}(\mathbf{x})}{|\mathbf{B}(\mathbf{x})|}
   \end{equation}
@@ -193,7 +195,8 @@
     \boxed{\mathrm{Deg}(g|_{\partial D^3})= \sum_{x_0\in D^3} \mathrm{Ind}(x_0)}
   \end{equation}
   }
-  The degree of the map counts the total topological index of the contained nulls.
+  The degree of the map counts the topological index of the nulls,
+  and is robust to perturbation.
 \end{block}
 \end{block}
 
@@ -217,29 +220,27 @@
 \begin{block}{\huge{The Isotrope Field}}
 \begin{block}{Isotrope Lines}
   The magnetic field direction defines a map from space to the sphere $g:\mathbb{R}^3\rightarrow S^2$,
-  from a 3 dimensional manifold to a 2 dimensional manifold.
+  mapping a 3 dimensional manifold to a 2 dimensional manifold.
   Since this map loses a degree of freedom,
-  at any point in $\mathbb{R}^3$ (with exeption of null points and singularities),
-  there is a there is a direction in which the direction
+  at any point in $\mathbb{R}^3$ (with the exception of null points and singularities),
+  there is a direction in which the direction
   of the magnetic field remains constant.
-  We call these lines the isotropes of the magnetic field.
+  We call the resulting paths of constant direction the isotropes of the magnetic field.
   These lines cannot start or end, except at nulls.
   As described by the topological index of nulls, the magnetic field direction
   on a closed surface surrounding a single null takes on all possible values (mapping over all of $S^2$).
   Therefore any null is the termination of isotropes for every magnetic field direction.
 \end{block}
 
-\begin{block}{Motivitating the Isotrope Field}
-  {\Large
+\begin{block}{Motivating the Isotrope Field}
   We see that nulls:
   \begin{itemize}
   \item can be counted by integration over an enclosing surface.
-  \item function as sources and terminations for isotrope lines.
+  \item function as sources and sinks for isotrope lines.
   \end{itemize}
   In analogy to electrostatic point charges,
   this suggests constructing a field tangent to the isotrope lines (E-field lines)
   that has a Gauss's Law for topological index (electric charge).
-  }
 \end{block}
 
 \begin{block}{Deriving the Isotrope Field}
@@ -285,7 +286,6 @@
       \partial_y\alpha & \partial_y \beta
     \end{vmatrix}
     D(\alpha,\beta)
-    =\int_{\partial U}g^*\omega
     =\int_{\partial U}v\cdot da
   \end{equation}
   For any two vectors $a,b$:
@@ -311,19 +311,22 @@
   \end{equation}
   If we choose to parameterize magnetic field direction with standard spherical coordinates,
   and use the usual solid angle definition of area on $S^2$, this becomes:
+  {\Large
   \begin{equation}
-    v=(\nabla\theta\times\nabla\phi)\sin\phi
+    \boxed{v=(\nabla\theta\times\nabla\phi)\sin\phi}
   \end{equation}
+  }
   The isotrope field is directed away from nulls of index $+1$ and towards nulls of
   index $-1$.
   In this sense the isotrope field is analogous to the electric field of  point charges, and it's
-  integral over a surface calculates the topological charge enclosed.
+  integral over a surface calculates the topological charge enclosed.\\
+  \begin{figure}
   \begin{columns}[t,totalwidth=\onecolwid] % Split up the two columns wide column
     \begin{column}{.45\onecolwid}
         \begin{centering}
         \textbf{Type A (Index -1)}
         \begin{figure}
-        \includegraphics[width=.45\onecolwid]{fig/negindex_start.png}
+        \includegraphics[width=.45\onecolwid]{fig/nulltropesneg.png}
         \end{figure}
         \end{centering}
     \end{column}
@@ -332,11 +335,16 @@
         \begin{centering}
         \textbf{Type B (Index +1)}
         \begin{figure}
-        \includegraphics[width=.45\onecolwid]{fig/posindex_start.png}
+        \includegraphics[width=.45\onecolwid]{fig/nulltropes.png}
         \end{figure}
     \end{centering}
     \end{column}
   \end{columns}
+  \caption{The fieldlines (white) and isotrope lines (colored)
+    of nulls with diagonal Jacobian $\pm(1,1,-2)$, whose isotrope fields then correspond precisely to
+    the fields of electrostatic point charges of unit charge.
+    Color and arrows indicate the magnetic field direction of each isotrope (compare to left).}
+  \end{figure}
 \end{block}
 
 \end{block}
@@ -344,118 +352,62 @@
 
 
 \begin{column}{\sepwid}\end{column} % Empty spacer column
-%----------------------------------------------------------------------------------------
-\begin{column}{\twocolwid} %Guide field section
-
-\begin{block}{\huge{Local Magnetic Fields in Guide Fields}}
-
-\begin{columns}[t,totalwidth=\twocolwid]
 
 \begin{column}{\onecolwid}
+\begin{block}{\huge{Local Magnetic Fields in Guide Fields}}
+
 \begin{block}{Isotropes of a Localized Field Embedded in a Guide Field}
-  This work was motivated by the problem of determining the locations of nulls in a field generated by
-  localized currents embedded in a homogeneous guide field
-  and how these nulls move when the guide field is varied.
+  The problem of locating the nulls in a localized field embedded in a homogeneous guide field becomes
+  immediately tractable using isotropes.
   \begin{itemize}
-    \item Systems such as the magnetospheres of celestial objects and the field configuration in an FRC.
     \item Nulls appear on the isotrope (of the local field) corresponding with the direction opposite to the
       direction of the guide field,
       at its intersection with surfaces of constant field strength equalling that of the guide field.
     \item Sum of indices of all nulls must be 0.
-    \item Isotrope pierces each surface of constant field strength twice(+1 on enterting, -1 on exiting).
+    \item Isotrope pierces each surface of constant field strength twice (+1 on enterting, -1 on exiting).
+    \item Applicable to systems such as the magnetospheres of celestial objects and
+      the field configuration in an FRC.
    \end{itemize}
-    
   \begin{figure}
     \centering
-    \begin{subfigure}[b]{.45\textwidth}
+    \begin{subfigure}[b]{.42\textwidth}
       \includegraphics[width=\textwidth]{fig/mainfig.png}
       \caption{}
     \end{subfigure}
-    \begin{subfigure}[b]{.45\textwidth}
+    \begin{subfigure}[b]{.42\textwidth}
       \includegraphics[width=\textwidth]{fig/separatrix_dipole.png}
       \caption{}
     \end{subfigure}
     \caption{
       a) The magnetic field of a dipole.
       The magnetic field lines are given by the blue curves.
-      Seven isotropes are shown in different colors, with a vector indicating the diretion of the
-      isotrope. b) The magnetic field of a dipole embedded in a guide field of direction $(-1,0,-1)$. 
+      Seven isotropes are shown in different colors, with vectors indicating the direction of the
+      isotropes. b) The magnetic field of a dipole embedded in a guide field of direction $(-1,0,-1)$. 
       The spines are colored red, the fan corresponding to the
       index $-1$ null is dark blue and the fan corresponding to the
-      index $+1$ is light blue.
+      index $+1$ null is light blue.
     }
   \end{figure}
   \begin{figure}
     \centering
-    \begin{subfigure}[b]{.45\textwidth}
+    \begin{subfigure}[b]{.42\textwidth}
       \includegraphics[width=\textwidth]{fig/onlyhopf.png}
       \caption{}
     \end{subfigure}
-    \begin{subfigure}[b]{.45\textwidth}
+    \begin{subfigure}[b]{.42\textwidth}
       \includegraphics[width=\textwidth]{fig/hopftropes.png}
       \caption{}
     \end{subfigure}
     \caption{
       a) The structure of the Hopf field, a toroidal magnetic field
       constructed from the Hopf map $S^3\rightarrow S^2$ through stereographic projection.~\cite{smiet2017hopf}
-      b) Several isotrope of the Hopf field with some of their directions labelled.
+      b) Several isotropes of the Hopf field with some of their directions labelled.
       Their color corresponds to the fieldline from (a) which they intersect.
       Note that the isotropes are straight lines.
     }
   \end{figure}
 \end{block}
 
-\begin{block}{\huge Further Directions}
-  \begin{block}{Isotrope Lines as Constraints}
-    \begin{itemize}
-      \item Application: Null search algorithm via integration of isotropic field.
-      (Compare with existing bisection and calculation of index over volumes.~\cite{greene1992locating})
-      \item Classification of null bifurcation by study of intersection of isotrope lines
-        with isosurfaces of $|B|$.
-    \end{itemize}
-  \end{block}
-
-  \begin{block}{Charts on $S^2$ and Straightening Nulls}
-    \begin{itemize}
-      \item The derivation of the isotrope field did not assume
-        any particular coordinates or area form on $S^2$.
-      \item This can be chosen arbitrarily , resulting in \textbf{different isotrope fields}.
-      \item In particular, consider a change of basis that diagonalizes $J$.
-        Using the standard area form on $S^2$ in these coordinates results in the fan plane
-        coinciding with the equator of $S^2$ and the spine coinciding with the poles,
-        regardless of the tilt of the fan plane relative to the spine in $R^3$.
-    \end{itemize}
-  \end{block}
-
-  \begin{block}{Isolines of Eigenvectors of $J$}
-    \begin{itemize}
-      \item Where $J$ has real eigenvalues, ($\nabla \times B=0$),
-        eigenvectors of $J$ are in $\mathbb{R}P^2$, which is a 2 dimensional manifold,
-        so there are lines along which an eigenvector is constant.
-      \item A null in a current-free region
-        moving due to a changing guide field does not change the orientation of
-        its fan plane and spine.
-    \end{itemize}
-  \end{block}
-
-  \begin{block}{Topological Defects and Connections to Other Fields}
-    \begin{itemize}
-      \item Framing nulls as topological defects
-        (in this case characterized by the first homotopy group of the sphere)
-        raises the possibility of connecting to or using results from
-        other fields with similar topological phenomena
-        (defects in nematic liquid crystals\cite{alexander2012nematic} etc).
-      \item Topologically invariant structures have previously been
-        found in other electromagnetic phenomena, lending the possibility
-        of relating these results to broader theories.\cite{thompson2014hopfions,ranada1992em}
-    \end{itemize}
-  \end{block}  
-  
-\end{block}
-
-\end{column}
-\begin{column}{\sepwid}\end{column} % Empty spacer column
-\begin{column}{\onecolwid}
 \begin{block}{Movement of Nulls}
   \begin{itemize}
     \item As the guide field is varied smoothly, the location of nulls changes smoothly.
@@ -482,41 +434,97 @@
 \begin{block}{Nulls Near Singular Surfaces}
   \begin{itemize}
     \item Using the identities $J\cdot v=B v\cdot \nabla \ln|B|$ (globally) and $v\cdot \nabla |B|=0$ (at the surface), $J\cdot v=0$.
-    \item The isotropic field is a zero eigenvector of $J$ at the singular surface.
+    \item The isotrope field is a zero eigenvector of $J$ at the singular surface.
     \item Eigenvectors and eigenvalues vary smoothly in $R^3$,
-      so near the surface there is an eigenvector $~v$ for the eigenvalue that vanishes at the surface.
-    \item On a path connection two nulls across a singular surface,
+      so near the surface there is an eigenvector $\approx v$ for the eigenvalue that vanishes at the surface.
+    \item On a path connecting two nulls across a singular surface,
       the eigenvalue that changes sign along the path corresponds to
       a fan plane eigenvector for each null.
     \item As nulls merge due to a varying guide field,
-      \textbf{they move towards each other through an isotrope on their fan planes.}
-  \end{itemize}
+      \textbf{they move towards each other along an isotrope on their fan planes.}
+   \end{itemize}
+   \begin{figure}
+     \includegraphics[width=.5\textwidth]{/fig/singular/fig_edit_color.png}
+     \hfill
+     \begin{minipage}[b]{.45\textwidth}
+       \caption{Two nulls of opposite type merging. The fan plane of the null on the left is in red,
+       and the fan plane of the null on the right is in blue. Each null's fan plane terminates
+       at the other's spine. The singular surface is shown in yellow.
+       The isotrope the nulls are following is a horizontal straight line.}
+     \end{minipage}
+   \end{figure}
+   
+ \end{block}
+
 \end{block}
 
-\vspace{4in}
+\end{column}
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+\begin{column}{\onecolwid}
+
+\begin{block}{\huge Further Directions}
+  \begin{block}{Isotrope Lines as Constraints}
+    \begin{itemize}
+      \item Application: Null search algorithm via integration of isotropic field,
+      as opposed to previously known method via volume
+      bisection and calculation of index.~\cite{greene1992locating})
+      \item Classification of null bifurcation by study of intersection of isotrope lines
+        with isosurfaces of $|B|$.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Charts on $S^2$ and Straightening Nulls}
+    \begin{itemize}
+      \item The derivation of the isotrope field did not assume
+        any particular coordinates or area form on $S^2$.
+      \item These can be chosen arbitrarily, resulting in \textbf{different isotrope fields}.
+      \item In particular, consider a change of basis that diagonalizes $J$ at a null.
+        Using the standard area form on $S^2$ in these coordinates results in the fan plane
+        coinciding with the equator of $S^2$ and the spine coinciding with the poles,
+        regardless of the tilt of the fan plane relative to the spine in $R^3$.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Isolines of Eigenvectors of $J$}
+    \begin{itemize}
+      \item Where $J$ has real eigenvalues, ($\nabla \times B=0$),
+        eigenvectors of $J$ are in $\mathbb{R}P^2$, which is a 2 dimensional manifold,
+        so there are lines along which an eigenvector is constant.
+      \item A null in a current-free region
+        moving due to a changing guide field does not change the orientation of
+        its fan plane and spine.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Topological Defects and Connections to Other Fields}
+    \begin{itemize}
+      \item Framing nulls as topological defects
+        (in this case characterized by the second homotopy group of the sphere)
+        raises the possibility of connecting to or using results from
+        other fields with similar topological phenomena
+        (defects in nematic liquid crystals\cite{alexander2012nematic} etc).
+      \item Topologically invariant structures have previously been
+        found in other electromagnetic phenomena, lending the possibility
+        of relating these results to broader theories.\cite{thompson2014hopfions,ranada1992em}
+    \end{itemize}
+  \end{block}  
+
+\end{block}
 
 \begin{block}{\huge References}
-
 \nocite{*} % Insert publications even if they are not cited in the poster
-\small{\bibliographystyle{unsrt}
-\bibliography{refs}\vspace{0.75in}}
-
+\setbeamertemplate{bibliography item}[text]
+\bibliographystyle{unsrt}
+\bibliography{refs}\vspace{0.75in}
 \end{block}
 
-\begin{block}{Source}
-\begin{centering}
-    \hfill
-    \qrcode[height=5cm]{https://github.com/BenYI/Topological_Nulls}
-    \hfill
-\end{centering}
-
-	\vspace{1cm}
+\begin{block}{\huge Source}
 This poster is available under the  CC-4.0-BY  licence and all the source material is freely
 available from the Github repository at \url{https://github.com/smiet/Topological_Nulls/}.
 
 Subrepositories for the stream tracing and visualization may be covered by different licences. 
 
-This code uses the BlenDaViz library: \url{https://github.com/SimonCan/BlenDaViz} to generate the images. 
+This code uses the BlenDaViz library: \url{https://github.com/SimonCan/BlenDaViz} to generate the images. \\
 
     To make the entire poster (including the images):\\
 \texttt{
@@ -527,33 +535,14 @@ This code uses the BlenDaViz library: \url{https://github.com/SimonCan/BlenDaViz
 \texttt{
     \$ > make
   }
-
-
+\vspace{2.2cm}
+\begin{figure}
+    \centering
+  \qrcode[height=7cm]{https://github.com/BenYI/Topological_Nulls}
+\end{figure}
 \end{block}
 \end{column}
-\end{columns}
-\end{block}
 
-%\end{column}
-
-%\begin{column}{\sepwid}\end{column} % Empty spacer column
-
-%\begin{column}{\onecolwid}
-
-% ----------------------------------------------------------------------------------------
-\begin{columns}[t,totalwidth=\twocolwid]
-
-\begin{column}{\onecolwid} % Final section of content
-\end{column}
-
-\begin{column}{\sepwid}\end{column} % Empty spacer column
-
-\begin{column}{\onecolwid} % End material
-
-\end{column}
-\end{columns}
-
-\end{column}
 \begin{column}{\sepwid}\end{column} % Empty spacer column
 
 

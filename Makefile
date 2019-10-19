@@ -6,10 +6,13 @@ poster:
 	pdflatex -synctex=1 -interaction=nonstopmode  -enable-write18 nulls.tex
 	pdflatex -synctex=1 -interaction=nonstopmode -enable-write18 nulls.tex
 
-images:  nulltropes onlyhopf hopftropes mainfig posindex negindex separatrix_dipole 
+images:  nulltropes onlyhopf hopftropes mainfig posindex negindex separatrix_dipole hopfnulls
 
 nulltropes:
 	cd fig/nulltropes; blender -b scene.blend -P nulltropes.py; blender -b scene.blend -P nulltropesneg.py
+
+hopfnulls:
+	cd fig/hopfnulls; blender -b scene.blend -P hopfnulls.py
 
 hopftropes:
 	cd fig/hopftropes; blender -b scene.blend -P hopftropes.py; blender -b scene.blend -P onlyhopf.py
